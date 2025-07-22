@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <title>PS Club Hesablama</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #e0eafc, #cfdef3);
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+    .container {
+      background: #ffffff;
+      padding: 35px 30px;
+      border-radius: 18px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.15);
+      max-width: 540px;
+      width: 100%;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+    h2 {
+      text-align: center;
+      color: #2d3436;
+      margin-bottom: 30px;
+      font-size: 26px;
+      letter-spacing: 0.5px;
+    }
+    label {
+      font-weight: 600;
+      color: #2f3542;
+      display: block;
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+    input[type="time"],
+    select {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid #ced6e0;
+      font-size: 15px;
+      margin-bottom: 20px;
+      background-color: #f9f9f9;
+      transition: border 0.3s, box-shadow 0.3s;
+    }
+    input[type="time"]:focus,
+    select:focus {
+      border-color: #1e90ff;
+      box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.2);
+      outline: none;
+    }
+    .section {
+      margin-bottom: 25px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #dfe4ea;
+    }
+    .button-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .button-group button {
+      flex: 1;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      border: none;
+      color: white;
+      padding: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .button-group button:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(to right, #00f2fe, #4facfe);
+    }
+    .result {
+      margin-top: 30px;
+      background: #ffffff;
+      padding: 22px;
+      border-left: 6px solid #1e90ff;
+      border-radius: 12px;
+      color: #2f3542;
+      font-size: 15.5px;
+      line-height: 1.7;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .result strong {
+      display: block;
+      margin-top: 12px;
+      font-size: 18px;
+      color: #1d3557;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in {
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 25px 20px;
+      }
+      h2 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🎮 PS Club Hesablayıcı</h2>
+    <div class="section">
+      <label>Başlama Saatı:
+        <input type="time" id="startTime">
+      </label>
+      <label>Bitmə Saatı:
+        <input type="time" id="endTime">
+      </label>
+      <label>Saatlıq Qiymət (AZN):
+        <select id="hourlyRate">
+          <option value="1.00">1.00 AZN</option>
+          <option value="1.50">1.50 AZN</option>
+          <option value="2.00">2.00 AZN</option>
+        </select>
+      </label>
+      <label>Yeməklik və İçkilər (bir neçə seçim edə bilərsiniz):
+        <select id="itemSelect" multiple size="10">
+          <option value="cola_2l">2 lit kola - 2.50 AZN</option>
+          <option value="cola_1l">1 ltr kola - 1.80 AZN</option>
+          <option value="cola_05l">0.5 ltr kola - 1.20 AZN</option>
+          <option value="cola_03l">0.3 ltr kola - 0.70 AZN</option>
+          <option value="full_boyuk">Full böyük - 1.00 AZN</option>
+          <option value="full_balaca">Full balaca - 0.60 AZN</option>
+          <option value="full_nitro">Full nitro - 0.70 AZN</option>
+          <option value="cappy_boyuk">Böyük Cappy - 2.50 AZN</option>
+          <option value="fuste_boyuk">Böyük Fuste - 2.50 AZN</option>
+          <option value="cappy_fuste_balaca">Balaca Cappy/Fuste - 1.50 AZN</option>
+          <option value="hell">Hell - 1.20 AZN</option>
+          <option value="slavyanka">Slavyanka - 0.50 AZN</option>
+          <option value="coplu_sok">Çöplü şok - 0.50 AZN</option>
+          <option value="cips_boyuk">Böyük cipsi - 3.50 AZN</option>
+          <option value="cips_balaca">Balaca cipsi - 2.50 AZN</option>
+          <option value="citos_boyuk">Böyük Citos - 2.00 AZN</option>
+          <option value="citos_orta">Orta Citos - 1.40 AZN</option>
+          <option value="citos_balaca">Balaca Citos - 0.60 AZN</option>
+        </select>
+      </label>
+    </div>
+    <div class="button-group">
+      <button onclick="hesabla()">🧮 Hesabla</button>
+      <button onclick="location.reload()">🔄 Sıfırla</button>
+    </div>
+    <div class="result fade-in" id="result"></div>
+  </div>
+  <script>
+    function hesabla() {
+      const start = document.getElementById("startTime").value;
+      const end = document.getElementById("endTime").value;
+      const rate = parseFloat(document.getElementById("hourlyRate").value);
+      if (!start || !end || isNaN(rate)) return;
+      const itemPrices = {
+        "cola_2l": 2.50, "cola_1l": 1.80, "cola_05l": 1.20, "cola_03l": 0.70,
+        "full_boyuk": 1.00, "full_balaca": 0.60, "full_nitro": 0.70,
+        "cappy_boyuk": 2.50, "fuste_boyuk": 2.50, "cappy_fuste_balaca": 1.50,
+        "hell": 1.20, "slavyanka": 0.50, "coplu_sok": 0.50,
+        "cips_boyuk": 3.50, "cips_balaca": 2.50,
+        "citos_boyuk": 2.00, "citos_orta": 1.40, "citos_balaca": 0.60
+      };
+      const selectedOptions = Array.from(document.getElementById("itemSelect").selectedOptions);
+      const selectedNames = selectedOptions.map(opt => opt.textContent);
+      const totalItemsCost = selectedOptions.reduce((sum, opt) => sum + (itemPrices[opt.value] || 0), 0);
+      const [startH, startM] = start.split(":").map(Number);
+      const [endH, endM] = end.split(":").map(Number);
+      let startMin = startH * 60 + startM;
+      let endMin = endH * 60 + endM;
+      if (endMin < startMin) endMin += 24 * 60;
+      const diffMin = endMin - startMin;
+      const diffHoursDecimal = (diffMin / 60).toFixed(2);
+      const payment = (diffHoursDecimal * rate).toFixed(2);
+      const total = (parseFloat(payment) + totalItemsCost).toFixed(2);
+      const resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = `
+        <div><strong>⏱ Saat fərqi:</strong> ${Math.floor(diffMin / 60)} saat ${diffMin % 60} dəqiqə</div>
+        <div><strong>💰 Saatlıq ödəniş:</strong> ${payment} AZN</div>
+        <div><strong>🥤 Seçilənlər:</strong> ${selectedNames.join(', ') || "Yoxdur"}</div>
+        <div><strong>🍿 Yemək/içki cəmi:</strong> ${totalItemsCost.toFixed(2)} AZN</div>
+        <hr style="margin: 15px 0;">
+        <div><strong style="font-size: 18px; color: #1e90ff;">💵 Cəmi ödəniş:</strong> <span style="font-size: 20px; font-weight: bold; color: #2c3e50;">${total} AZN</span></div>
+      `;
+    }
+  </script>
+</body>
+</html>
